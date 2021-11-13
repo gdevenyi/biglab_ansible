@@ -1,4 +1,4 @@
-# Ansible deployment for lozano lab linux workstations
+# Ansible deployment for biglab linux workstations
 
 Ansible deployments scripts designed to be applied against a Kubuntu 20.04 fresh install.
 
