@@ -1,0 +1,6 @@
+#!/bin/bash
+set -euo pipefail
+
+export SINGULARITYENV_FS_LICENSE=/opt/quarantine/freesurfer/7.2.0/license.txt
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+singularity run -B $(pwd):/mnt --pwd /mnt --cleanenv ${DIR}/fmriprep-20.2.6.simg $@

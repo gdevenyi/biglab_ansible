@@ -55,3 +55,52 @@
     path: /etc/profile.d/99singularity.sh
     line: "export PATH=/opt/quarantine/singularity/bin${PATH:+:$PATH}"
     create: yes
+
+
+###############################################################################
+
+- name: create CIVET path
+  ansible.builtin.file:
+    path: /opt/quarantine/CIVET/2.1.1
+    state: directory
+
+- name: Build CIVET container
+  shell: /opt/quarantine/singularity/bin/singularity build /opt/quarantine/CIVET/2.1.1/civet-2.1.1.simg docker://mcin/civet:2.1.1
+  args:
+    creates: /opt/quarantine/CIVET/2.1.1/civet-2.1.1.simg
+
+- name: CIVET singularity wrapper
+  copy:
+    src: files/CIVET_Processing_Pipeline
+    dest: /opt/quarantine/CIVET/2.1.1/
+    mode: u=rwx,g=rx,u=rx
+
+- name: add CIVET to path
+  lineinfile:
+    path: /etc/profile.d/99civet.sh
+    line: "export PATH=/opt/quarantine/CIVET/2.1.1${PATH:+:$PATH}"
+    create: yes
+
+###############################################################################
+
+- name: create fMRIprep path
+  ansible.builtin.file:
+    path: /opt/quarantine/fMRIprep/
+    state: directory
+
+- name: Build fmriprep container
+  shell: /opt/quarantine/singularity/bin/singularity build /opt/quarantine/fMRIprep/fmriprep-20.2.6.simg docker://nipreps/fmriprep:20.2.6
+  args:
+    creates: /opt/quarantine/fMRIprep/fmriprep-20.2.6.simg
+
+- name: fMRIprep singularity wrapper
+  copy:
+    src: files/fmriprep
+    dest: /opt/quarantine/fMRIprep/
+    mode: u=rwx,g=rx,u=rx
+
+- name: add fMRIprep to path
+  lineinfile:
+    path: /etc/profile.d/99fmriprep.sh
+    line: "export PATH=/opt/quarantine/fMRIprep/${PATH:+:$PATH}"
+    create: yes

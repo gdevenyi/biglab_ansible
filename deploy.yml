@@ -3,8 +3,4 @@
   become: yes
   roles:
     - workstation
-
-- hosts: nvidia
-  become: yes
-  roles:
     - nvidia

@@ -63,14 +63,31 @@
   when:
     - '"cobralab" in ansible_run_tags or "all" in ansible_run_tags'
 
-- name: Download CoBrALab atlases
-  unarchive:
-    src: "{{ item }}"
-    dest: /opt/quarantine/resources/cobralab-atlases/brains
-    creates: /opt/quarantine/resources/cobralab-atlases/brains/brains_t1
-    remote_src: yes
-  loop:
-    - http://cobralab.net/files/brains_t1.tar.bz2
-    - http://cobralab.net/files/brains_t2.tar.bz2
-  when:
-    - '"cobralab" in ansible_run_tags or "all" in ansible_run_tags'
+# - name: Download CoBrALab atlases
+#   unarchive:
+#     src: "{{ item }}"
+#     dest: /opt/quarantine/resources/cobralab-atlases/brains
+#     creates: /opt/quarantine/resources/cobralab-atlases/brains/brains_t1
+#     remote_src: yes
+#   loop:
+#     - http://cobralab.net/files/brains_t1.tar.bz2
+#     - http://cobralab.net/files/brains_t2.tar.bz2
+#   when:
+#     - '"cobralab" in ansible_run_tags or "all" in ansible_run_tags'
+
+- name: enable QUARANTINE_PATH
+  lineinfile:
+    path: /etc/profile.d/99quarantine_path.sh
+    line: "export QUARANTINE_PATH=/opt/quarantine"
+    create: yes
+
+- name: create BeAST path
+  ansible.builtin.file:
+    path: /opt/quarantine/resources/BEaST_libraries/
+    state: directory
+
+- name: link BeAST resources
+  ansible.builtin.file:
+    src: /opt/minc/share/beast-library-1.1
+    dest: /opt/quarantine/resources/BEaST_libraries/combined
+    state: link

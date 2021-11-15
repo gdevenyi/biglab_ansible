@@ -5,7 +5,14 @@
     state: latest
     cache_valid_time: 3600
   vars:
-    packages: "{{ lookup('file', 'files/r-list').splitlines() }}"
+    packages: "{{ lookup('file', 'files/r-short-list').splitlines() }}"
+
+- name: Install rogme (R)
+  shell: Rscript --vanilla -e 'remotes::install_github("GRousselet/rogme", upgrade=FALSE)'
+  args:
+    creates: /usr/local/lib/R/site-library/rogme
+  when:
+    - '"R" in ansible_run_tags or "all" in ansible_run_tags'
 
 - name: install rstudio
-  apt: deb=https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.4.1106-amd64.deb
+  apt: deb=https://download1.rstudio.org/desktop/bionic/amd64/rstudio-2021.09.1-372-amd64.deb

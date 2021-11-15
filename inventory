@@ -1,0 +1,2 @@
+[workstations]
+biglab1 ansible_ssh_user=localadmin

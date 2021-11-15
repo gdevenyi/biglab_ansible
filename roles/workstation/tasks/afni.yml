@@ -18,11 +18,18 @@
     - libxm4
     - libcurl4-openssl-dev
     - libxml2-dev
+    - libgfortran-8-dev
+    - libgomp1
+    - xfonts-100dpi
+    - libgdal-dev
+    - libopenblas-dev
+    - libnode-dev
+    - libudunits2-dev
     - libssl-dev
     - libgfortran4
 
-#Fix afni being built against a different version of gsl
-#https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/background_install/install_instructs/steps_linux_ubuntu18.html
+# Fix afni being built against a different version of gsl
+# https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/background_install/install_instructs/steps_linux_ubuntu20.html
 - name: fix libgsl
   file:
     src: /usr/lib/x86_64-linux-gnu/libgsl.so.23
@@ -31,7 +38,7 @@
 
 - name: download afni installer
   get_url:
-    url: https://afni.nimh.nih.gov/pub/dist/bin/linux_ubuntu_16_64/@update.afni.binaries
+    url: https://afni.nimh.nih.gov/pub/dist/bin/misc/@update.afni.binaries
     dest: /tmp/@update.afni.binaries
 
 - name: install afni

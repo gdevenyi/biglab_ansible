@@ -10,7 +10,7 @@ Installs neuroimaging tools into a quarantine, along with ubuntu dependencies
 - miniforge (anaconda) with lots of extras
 - smaller neuroimaging tools (dcm2niix, mricron, mricrogl, mi-brain)
 - resources
-- R and all available r packages from cran2deb ppa
+- R and r packages from cran2deb ppa
 - rstudio
 - docker + singularity
 
@@ -28,8 +28,3 @@ playbook: deploy.yml
       TASK TAGS: [R, afni, ants, cobralab, containers, files, freesurfer, fsl, minc, python, resources, science, software]
 $ ansible-playbook --skip-tags freesurfer
 ```
-
-### R packages
-The default R package list is in ``files/r-list`` and is *all* functioning cran2deb packages on the CRAN ppa.
-A minimum set of packages which supports other third-party R packages is in ``files/r-short-list``, edit
-``roles/tasks/R.yml`` to change which list is used.

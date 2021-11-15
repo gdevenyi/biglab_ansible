@@ -1,0 +1,9 @@
+# Install snaps
+- name: Install snaps
+  community.general.snap:
+    name:
+      - htop
+      - krita
+      - vlc
+      - gimp
+      - inkscape

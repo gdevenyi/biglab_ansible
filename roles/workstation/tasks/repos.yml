@@ -9,7 +9,7 @@
     - https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub
     - https://dl.xanmod.org/gpg.key
     - https://apt.kitware.com/keys/kitware-archive-latest.asc
-    - https://updates.signal.org/desktop/apt/keys.asc
+    - https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc
 
 - name: apt keys from keyserver
   apt_key: id={{ item }} keyserver=keyserver.ubuntu.com state=present
@@ -44,14 +44,13 @@
     - deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/
     - ppa:c2d4u.team/c2d4u4.0+
     - deb https://apt.kitware.com/ubuntu/ focal main
-    #Cran depends on this silly archive
+    # Cran depends on this silly archive
     #- ppa:ubuntugis/ppa
-    - deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /
-    #Kubuntu updates and backports
+    - deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /
+    # Kubuntu updates and backports
     - ppa:kubuntu-ppa/backports
     - ppa:kubuntu-ppa/ppa
     - ppa:linuxuprising/libpng12
-    - deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main
 
 - name: chrome repo
   apt_repository: repo='deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' state=present filename=google-chrome update_cache=no

@@ -24,6 +24,7 @@
     - zlib1g-dev
     - automake
     - cpanminus
+    - zenity
 
 - cpanm: name="Math::Matrix"
 
@@ -54,7 +55,7 @@
 - name: Install pyminc (python)
   pip:
     name: pyminc
-    executable: /opt/quarantine/miniforge/bin/pip
+    executable: /opt/quarantine/anaconda/bin/pip
   when:
     - '"python" in ansible_run_tags or "all" in ansible_run_tags'
 
@@ -74,7 +75,7 @@
 - name: Install minc-stuffs (python)
   pip:
     name: /opt/quarantine/minc-stuffs/src
-    executable: /opt/quarantine/miniforge/bin/pip
+    executable: /opt/quarantine/anaconda/bin/pip
   when:
     - '"python" in ansible_run_tags or "all" in ansible_run_tags'
 
@@ -99,10 +100,10 @@
     version: v2.2.30
 
 - name: Install minc2-simple (python)
-  shell: . /opt/minc/1.9.18/minc-toolkit-config.sh && /opt/quarantine/miniforge/bin/python setup.py build && /opt/quarantine/miniforge/bin/python setup.py install
+  shell: . /opt/minc/1.9.18/minc-toolkit-config.sh && /opt/quarantine/anaconda/bin/python setup.py build && /opt/quarantine/anaconda/bin/python setup.py install
   args:
     chdir: /opt/quarantine/minc2-simple/src/python
-    creates: /opt/quarantine/miniforge/bin/xfmavg_scipy.py
+    creates: /opt/quarantine/anaconda/bin/xfmavg_scipy.py
   when:
     - '"python" in ansible_run_tags or "all" in ansible_run_tags'
 
@@ -116,14 +117,14 @@
 ###############################################################################
 
 - name: Install pydpiper dependencies (python)
-  shell: /opt/quarantine/miniforge/bin/conda install --yes configargparse pyro4 ordered-set networkx pandas
+  shell: /opt/quarantine/anaconda/bin/mamba install --yes -S configargparse pyro4 ordered-set networkx pandas
   when:
     - '"python" in ansible_run_tags or "all" in ansible_run_tags'
 
 - name: Install pydpiper (python)
   pip:
-    name: https://github.com/Mouse-Imaging-Centre/pydpiper/archive/v2.0.14.tar.gz
-    executable: /opt/quarantine/miniforge/bin/pip
+    name: https://github.com/Mouse-Imaging-Centre/pydpiper/archive/v2.0.15.tar.gz
+    executable: /opt/quarantine/anaconda/bin/pip
   when:
     - '"python" in ansible_run_tags or "all" in ansible_run_tags'
 

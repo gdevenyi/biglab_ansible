@@ -1,6 +1,3 @@
-#PyQC
-#antsRegistration-MAGeT
-
 - name: Install Common APT Packages
   apt:
     name: "{{ packages }}"
@@ -36,4 +33,56 @@
   lineinfile:
     path: /etc/profile.d/99minc-toolkit-extras.sh
     line: "export PATH=/opt/quarantine/minc-toolkit-extras${PATH:+:$PATH}"
+    create: yes
+
+################################################################################
+
+- name: clone optimized_antsMultivariateTemplateConstruction
+  git:
+    repo: https://github.com/CoBrALab/optimized_antsMultivariateTemplateConstruction.git
+    dest: /opt/quarantine/optimized_antsMultivariateTemplateConstruction
+
+- name: enable optimized_antsMultivariateTemplateConstruction
+  lineinfile:
+    path: /etc/profile.d/99optimized_antsMultivariateTemplateConstruction.sh
+    line: "export PATH=/opt/quarantine/optimized_antsMultivariateTemplateConstruction${PATH:+:$PATH}"
+    create: yes
+
+################################################################################
+
+- name: clone PyQC
+  git:
+    repo: https://github.com/CoBrALab/PyQC.git
+    dest: /opt/quarantine/PyQC
+
+- name: enable PyQC
+  lineinfile:
+    path: /etc/profile.d/99PyQC.sh
+    line: "export PATH=/opt/quarantine/PyQC${PATH:+:$PATH}"
+    create: yes
+
+################################################################################
+
+- name: clone iterativeN3
+  git:
+    repo: https://github.com/CoBrALab/iterativeN3.git
+    dest: /opt/quarantine/iterativeN3
+
+- name: enable iterativeN3
+  lineinfile:
+    path: /etc/profile.d/99iterativeN3.sh
+    line: "export PATH=/opt/quarantine/iterativeN3${PATH:+:$PATH}"
+    create: yes
+
+################################################################################
+
+- name: clone twolevel_dbm
+  git:
+    repo: https://github.com/CoBrALab/twolevel_ants_dbm.git
+    dest: /opt/quarantine/twolevel_ants_dbm
+
+- name: enable twolevel_ants_dbm
+  lineinfile:
+    path: /etc/profile.d/99twolevel_ants_dbm.sh
+    line: "export PATH=/opt/quarantine/twolevel_ants_dbm${PATH:+:$PATH}"
     create: yes

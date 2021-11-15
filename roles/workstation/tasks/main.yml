@@ -3,6 +3,7 @@
 
 - include: repos.yml
 - include: packages.yml
+- include: snaps.yml
 - include: file-config.yml
 
 - name: Create /opt/quarantine
@@ -28,3 +29,12 @@
 - {include: cobralab.yml, tags: cobralab}
 - {include: containers.yml, tags: containers}
 - {include: resources.yml, tags: resources}
+
+- name: Recursively fix quarantine permissions
+  ansible.builtin.file:
+    path: /opt/quarantine
+    state: directory
+    recurse: yes
+    owner: root
+    group: root
+    mode: u=rwX,g=rX,o=rX

@@ -60,6 +60,9 @@
     - unattended-upgrades
     - nvme-cli
     - libpng12-0
+    # DSI-studio deps
+    - libqt5charts5
+    - libqt5opengl5
 
 - name: Install Development APT Packages
   apt:
@@ -124,11 +127,8 @@
       - libreoffice
       - libreoffice-plasma
       - libreoffice-style-breeze
-      - inkscape
-      - gimp
-      - vlc
       - muon
-      - signal-desktop
+
 
 - name: Install texlive
   apt:
@@ -184,5 +184,6 @@
   with_items:
     - https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest
     - https://atom.io/download/deb
-    - https://downloads.slack-edge.com/linux_releases/slack-desktop-4.4.2-amd64.deb
+    - https://go.microsoft.com/fwlink/?LinkID=760868
+    - https://zoom.us/client/latest/zoom_amd64.deb
   ignore_errors: yes

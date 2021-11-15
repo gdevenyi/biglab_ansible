@@ -1,11 +1,10 @@
-auto_activate_base: false
+auto_activate_base: true
 channels:
+  - conda-forge
   - mrtrix3
   - simpleitk
-  - itk
-  - conda-forge
   - bioconda
   - defaults
-channel_priority: strict
+#channel_priority: flexible
 pip_interop_enabled: true
 sat_solver: pycryptosat

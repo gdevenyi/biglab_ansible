@@ -1,0 +1,5 @@
+#!/bin/bash
+set -euo pipefail
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+singularity exec -B $(pwd):/mnt --pwd /mnt --cleanenv ${DIR}/civet-2.1.1.simg CIVET_Processing_Pipeline $@
