@@ -27,7 +27,9 @@
     - cpanminus
     - zenity
 
-- cpanm: name="Math::Matrix"
+- name: Install missing perl module
+  cpanm:
+    name: "Math::Matrix"
 
 ###############################################################################
 
