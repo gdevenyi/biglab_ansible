@@ -1,3 +1,4 @@
+---
 - name: Create freesurfer directories
   file:
     path: "{{ item }}"
@@ -42,12 +43,11 @@
     line: "export FREESURFER_HOME=/opt/quarantine/freesurfer-7.2.0/freesurfer && . ${FREESURFER_HOME}/SetUpFreeSurfer.sh"
     create: yes
 
-- name: install freesurfer licence
+- name: install freesurfer license
   copy: src=files/license.txt dest="{{ item }}"
   loop:
       # - /opt/quarantine/freesurfer-6.0.0/freesurfer
       # - /opt/quarantine/freesurfer-7.1.0/freesurfer
       # - /opt/quarantine/freesurfer-7.1.1/freesurfer
       - /opt/quarantine/freesurfer-7.2.0/freesurfer
-
   ignore_errors: yes

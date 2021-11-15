@@ -1,4 +1,4 @@
-# Install snaps
+---
 - name: Install snaps
   community.general.snap:
     name:

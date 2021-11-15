@@ -1,3 +1,4 @@
+---
 - name: Install science apt packages
   apt:
     name: "{{ packages }}"
@@ -139,6 +140,18 @@
     create: yes
 
 ###############################################################################
+
+- name: Install DSI-Studio Deps
+  apt:
+    name: "{{ packages }}"
+    update_cache: yes
+    state: latest
+    autoclean: yes
+    autoremove: yes
+  vars:
+    packages:
+    - libqt5charts5
+    - libqt5opengl5
 
 - name: Install DSI-Studio
   unarchive:

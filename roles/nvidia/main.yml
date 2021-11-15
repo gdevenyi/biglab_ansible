@@ -1,2 +1,3 @@
+---
 - name: Auto-detect and install latest nvidia driver
   command:  ubuntu-drivers install

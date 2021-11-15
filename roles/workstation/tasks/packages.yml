@@ -1,4 +1,8 @@
-- apt: upgrade=dist update_cache=yes
+---
+- name: apt update and upgrade
+  apt: 
+    upgrade: dist
+    update_cache: yes
 
 - name: accept mscorefonts
   debconf: name='ttf-mscorefonts-installer' question='msttcorefonts/accepted-mscorefonts-eula' value='true' vtype='select'
@@ -60,9 +64,6 @@
     - unattended-upgrades
     - nvme-cli
     - libpng12-0
-    # DSI-studio deps
-    - libqt5charts5
-    - libqt5opengl5
 
 - name: Install Development APT Packages
   apt:

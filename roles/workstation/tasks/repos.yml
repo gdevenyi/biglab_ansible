@@ -30,13 +30,11 @@
   apt_repository: repo='{{item}}' state=present update_cache=no
   with_items:
     - ppa:inkscape.dev/stable
-    #- ppa:otto-kesselgulasch/gimp
     - ppa:ansible/ansible
     - ppa:libreoffice/ppa
     - ppa:x2go/stable
     - ppa:graphics-drivers/ppa
     - ppa:git-core/ppa
-    #- ppa:jonathonf/backports
     - deb https://dl.winehq.org/wine-builds/ubuntu/ focal main
     - deb http://neuro.debian.net/debian data main contrib non-free
     - deb http://neuro.debian.net/debian focal main contrib non-free
@@ -44,10 +42,7 @@
     - deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/
     - ppa:c2d4u.team/c2d4u4.0+
     - deb https://apt.kitware.com/ubuntu/ focal main
-    # Cran depends on this silly archive
-    #- ppa:ubuntugis/ppa
     - deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /
-    # Kubuntu updates and backports
     - ppa:kubuntu-ppa/backports
     - ppa:kubuntu-ppa/ppa
     - ppa:linuxuprising/libpng12

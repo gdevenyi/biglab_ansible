@@ -1,3 +1,4 @@
+---
 - name: create resources directory
   file:
     path: /opt/quarantine/resources
@@ -63,17 +64,17 @@
   when:
     - '"cobralab" in ansible_run_tags or "all" in ansible_run_tags'
 
-# - name: Download CoBrALab atlases
-#   unarchive:
-#     src: "{{ item }}"
-#     dest: /opt/quarantine/resources/cobralab-atlases/brains
-#     creates: /opt/quarantine/resources/cobralab-atlases/brains/brains_t1
-#     remote_src: yes
-#   loop:
-#     - http://cobralab.net/files/brains_t1.tar.bz2
-#     - http://cobralab.net/files/brains_t2.tar.bz2
-#   when:
-#     - '"cobralab" in ansible_run_tags or "all" in ansible_run_tags'
+- name: Download CoBrALab atlases
+  unarchive:
+    src: "{{ item }}"
+    dest: /opt/quarantine/resources/cobralab-atlases/brains
+    creates: /opt/quarantine/resources/cobralab-atlases/brains/brains_t1
+    remote_src: yes
+  loop:
+    - http://cobralab.net/files/brains_t1.tar.bz2
+    - http://cobralab.net/files/brains_t2.tar.bz2
+  when:
+    - '"cobralab" in ansible_run_tags or "all" in ansible_run_tags'
 
 - name: enable QUARANTINE_PATH
   lineinfile:

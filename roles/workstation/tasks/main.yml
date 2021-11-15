@@ -1,3 +1,4 @@
+---
 - name: enable sudo with no password for sudoers
   lineinfile: dest=/etc/sudoers state=present regexp='^localadmin ALL\=' line='localadmin ALL=(ALL) NOPASSWD:ALL' validate='visudo -cf %s'
 
@@ -37,4 +38,4 @@
     recurse: yes
     owner: root
     group: root
-    mode: u=rwX,g=rX,o=rX
+    mode: u+rwX,g=rX,o=rX
