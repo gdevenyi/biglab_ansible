@@ -1,4 +1,7 @@
 ---
+- name: enable profile.d files in login and interactive shells
+  copy: src=files/bash.bashrc dest=/etc/bash.bashrc
+
 - name: enable unattended upgrades
   copy: src=files/50unattended-upgrades dest=/etc/apt/apt.conf.d/
 
